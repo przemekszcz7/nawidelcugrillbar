@@ -1,0 +1,6 @@
+{
+  "name": "Na Widelcu Grill & Bar",
+  "description": "Strona restauracji Na Widelcu w Dziwnówku. Obiady domowe, grill, kebab, pizza i ryby w porcjach XXL.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
