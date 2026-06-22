@@ -1,0 +1,34 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # lub master, zależnie od Twojej głównej gałęzi
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout kodu
+        uses: actions/checkout@v4
+
+      - name: Konfiguracja Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-cache: 'npm' # automatycznie keszuje paczki, przyspieszając kolejne buildy
+
+      - name: Instalacja zależności
+        run: npm ci
+
+      - name: Budowanie aplikacji
+        run: npm run build
+
+      - name: Deployment do GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # domyślny folder wyjściowy z Vite
+          branch: gh-pages # gałąź, na którą trafi zbudowana aplikacja
